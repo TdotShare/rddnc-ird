@@ -1,0 +1,1 @@
+export const API  =  process.env.NODE_ENV === 'production' ? "https://mis-ird.rmuti.ac.th/service/nddnc/api" : "http://127.0.0.1:8000/api"

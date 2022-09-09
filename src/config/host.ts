@@ -1,0 +1,1 @@
+export const HOST  =  process.env.NODE_ENV === 'production' ? "https://mis-ird.rmuti.ac.th/nddnc" : "http://localhost:3000/nddnc"
