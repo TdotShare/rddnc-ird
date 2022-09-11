@@ -1,11 +1,16 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import { RootState } from "../../../store/ConfigureStore"
+import exportedAPITopic from "../../../utils/api/topic"
 import { routerPath } from "../../../utils/routerpath"
+import exportedSwal from "../../../utils/swal"
 
 export default function TopicCreateVM() {
 
     const user = useSelector((state: RootState) => state.user.data)
+
+    const navigate = useNavigate();
 
     const [values] = useState({
         title: "เอกสารของคุณ",
@@ -27,10 +32,21 @@ export default function TopicCreateVM() {
             topic_note: { value: string };
         };
 
-        console.log(formdata.topic_name.value)
-        console.log(formdata.topic_pdf_file.files[0].name)
-        console.log(formdata.topic_docx_file.files[0].name)
-        console.log(formdata.topic_note.value)
+        let data = {
+            topic_name: formdata.topic_name.value ,
+            topic_pdf_file: formdata.topic_pdf_file.files[0],
+            topic_docx_file: formdata.topic_docx_file.files[0],
+            topic_note : formdata.topic_note.value,
+        }
+
+        let res = await exportedAPITopic.createTopic(data , user.token)
+
+        if(res.bypass){
+            exportedSwal.actionSuccess(`ส่งคำขอให้เจ้าที่ตรวจสอบเรียบร้อย รอเจ้าหน้าที่ ตรวจสอบ !`)
+            navigate(routerPath.Topic)
+        }else{
+            exportedSwal.actionInfo(res.message)
+        }
     }
     
     return {
