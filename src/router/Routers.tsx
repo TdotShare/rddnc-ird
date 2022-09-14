@@ -24,9 +24,11 @@ import TopicCreatePage from '../views/1-topic/topic-create/Topic-create-page';
 import DashboardPage from '../views/admin/1-dashboard/dashboard-index/Dashboard-page';
 import AccountIndexPage from '../views/admin/3-account/account-index/Account-index-page';
 import ChkstopicIndexPage from '../views/admin/2-chkstopic/chkstopic-index/Chkstopic-index-page';
+import ChkstopicUpdatePage from '../views/admin/2-chkstopic/chkstopic-update/Chkstopic-update-page';
 import LogoutPage from '../views/0-auth/logout/Logout-page';
 import Error404 from '../views/error/Error-page';
 import AdminRoute from './AdminRoute';
+
 
 function Routers() {
 
@@ -44,6 +46,7 @@ function Routers() {
                         <Route path={`${routerPath.Topic}/create`} element={<UserAuthen children={<TopicCreatePage />} />} />
                         <Route path={`${routerPath.Dashboard}`} element={<UserAuthen children={<AdminRoute role={data.data.role} children={<DashboardPage />} />} />} />
                         <Route path={`${routerPath.Chkstopic}`} element={<UserAuthen children={<AdminRoute role={data.data.role} children={<ChkstopicIndexPage />} />} />} />
+                        <Route path={`${routerPath.Chkstopic}/:id`} element={<UserAuthen children={<AdminRoute role={data.data.role} children={<ChkstopicUpdatePage />} />} />} />
                         <Route path={`${routerPath.Account}`} element={<UserAuthen children={<AdminRoute role={data.data.role} children={<AccountIndexPage />} />} />} />
                         <Route path="/error" element={<UserAuthen children={<Error404 />} />} />
                         <Route path="/logout" element={<LogoutPage />} />

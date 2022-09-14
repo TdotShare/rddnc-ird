@@ -1,6 +1,7 @@
 interface Status {
     status_id     : number;
     status_name: number;
+    status_bypass : boolean;
     status_create_at : string;
     status_update_at : string;
 }

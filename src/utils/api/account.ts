@@ -1,7 +1,6 @@
 import axios from "axios";
 import { API } from "../../config/api";
 import { APIAccount_data } from "../../model/User";
-import { resp_error } from "../resp_error";
 
 const getAccountAll = async (token: String, number: number, textSearch: string) => {
 
