@@ -4,6 +4,7 @@ import Button from '../../../components/Button'
 import ContentHeader from '../../../components/content-header/ContentHeader'
 import LoadingData from '../../../components/LoadingData'
 import Pagination from '../../../components/Pagination'
+import { PUBLIC_PATH } from '../../../config/public_path'
 import { routerPath } from '../../../utils/routerpath'
 import TopicIndexVM from './Topic-index-vm'
 
@@ -61,14 +62,23 @@ function TopicIndexPage() {
                     <div style={{ marginBottom: `1%` }}></div>
 
                     <div className="table-responsive">
-                      <table className="table table-bordered ">
+                      <table className="table table-bordered " style={{textAlign:`center`}}>
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">ชื่อเรื่อง</th>
-                            <th scope="col">ไฟล์แนบ</th>
-                            <th scope="col">สถานะ</th>
-                            <th scope="col"></th>
+                            <th rowSpan={2} scope="col">#</th>
+                            <th rowSpan={2} scope="col">ชื่อเรื่อง</th>
+                            <th colSpan={2} scope="col">ไฟล์แนบ</th>
+                            <th rowSpan={2} scope="col">สถานะการดำเนินงาน</th>
+                            <th colSpan={3} scope="col">ผลการตรวจสอบ</th>
+                            <th rowSpan={2} scope="col"></th>
+                          </tr>
+                          <tr>
+                            <th scope="col" >word</th>
+                            <th scope="col" >pdf</th>
+                            <th scope="col" >เปอร์เซ็นต์ความซ้ำซ้อน</th>
+                            <th scope="col" >รายละเอียดการตรวจสอบ</th>
+                            <th scope="col" >Note. เพิ่มจากเจ้าหน้าที่</th>
+                            
                           </tr>
                         </thead>
                         <tbody>
@@ -77,14 +87,13 @@ function TopicIndexPage() {
                               <tr key={index} >
                                 <th scope="row">{Number(viewModel.query_topic_data.data?.data.from!) + index}</th>
                                 <td>{el.topic_name}</td>
-                                <td>
-                                  <ul>
-                                    <li>{el.topic_pdf_file}</li>
-                                    <li>{el.topic_docx_file}</li>
-                                  </ul>
-                                </td>
+                                <td><a href={`${PUBLIC_PATH}/upload/${el.topic_id}/${el.topic_docx_file}`} target={`_blank`} >{el.topic_docx_file}</a> </td>
+                                <td><a href={`${PUBLIC_PATH}/upload/${el.topic_id}/${el.topic_pdf_file}`}  target={`_blank`}  >{el.topic_pdf_file}</a></td>
                                 <td>{el.status_name}</td>
-                                <td><button className='btn btn-block btn-success' disabled={el.status_bypass ? true : false} ><i className="fas fa-clipboard-check"></i> ไฟล์ตอบกลับจากเจ้าหน้าที่</button> </td>
+                                <td>{el.answer_percent}</td>
+                                <td><a href={`${PUBLIC_PATH}/upload/${el.topic_id}/${el.answer_pdf_file}`}  target={`_blank`}  >{el.answer_pdf_file}</a></td>
+                                <td>{el.answer_note}</td>
+                                <td><button className='btn btn-block btn-danger' onClick={() => viewModel.actionDelete(el.topic_id)}  disabled={el.topic_status_id === 1 ? false : true} ><i className="fas fa-trash"></i> ลบข้อมูล</button> </td>
                               </tr>
                             ))
                           }

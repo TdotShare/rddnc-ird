@@ -11,6 +11,9 @@ interface Topic {
     status_bypass : boolean;
     topic_create_at : string;
     topic_update_at : string;
+    answer_percent? : string;
+    answer_note? : string;
+    answer_pdf_file? : string;
 }
 
 export type APITopic_data = {

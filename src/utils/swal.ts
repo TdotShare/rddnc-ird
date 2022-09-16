@@ -21,11 +21,23 @@ const confirmDelete = async (text: string) => {
 
 }
 
+const confirmUpdate = async () => {
+
+    return swal({
+        title: "คุณแน่ใจไหม ?",
+        text: `หากคุณอัปเดตข้อมูลแล้วจะ ไม่สามารถกลับมาแก้ไขข้อมูลได้อีกคุณต้องการอัปเดต ใช่หรือไม่?`,
+        icon: "warning",
+        buttons: ['Cancel', 'Ok']
+    })
+
+}
+
 const exportedSwal = {
     actionInfo,
     actionSuccess,
     actionError,
-    confirmDelete
+    confirmDelete,
+    confirmUpdate
 };
 
 export default exportedSwal;

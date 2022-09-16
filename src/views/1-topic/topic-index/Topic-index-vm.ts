@@ -1,14 +1,17 @@
 import { debounce } from "lodash"
 import React from "react"
 import { useState } from "react"
-import { useQuery } from "react-query"
+import { useQuery, useQueryClient } from "react-query"
 import { useSelector } from "react-redux"
 import { APITopic_data } from "../../../model/Topic"
 import { RootState } from "../../../store/ConfigureStore"
 import exportedAPITopic from "../../../utils/api/topic"
 import { routerPath } from "../../../utils/routerpath"
+import exportedSwal from "../../../utils/swal"
 
 export default function TopicIndexVM() {
+
+    const queryClient = useQueryClient()
 
     const user = useSelector((state: RootState) => state.user.data)
 
@@ -36,6 +39,23 @@ export default function TopicIndexVM() {
             { name: "เอกสารของคุณ", url: "", active: true },
         ]
     })
+
+
+    const actionDelete = async (id: number) => {
+
+        let confirmDelete = await exportedSwal.confirmDelete("ที่เลือก")
+
+        if (confirmDelete) {
+            const res = await exportedAPITopic.deleteTopic(id, user.token)
+
+            if (res.bypass) {
+                exportedSwal.actionSuccess("ลบข้อมูลที่เลือกเรียบร้อย !")
+                queryClient.invalidateQueries()
+            } else {
+                exportedSwal.actionInfo('ไม่สามารถลบข้อมูลได้ กรุณาติดต่อเจ้าหน้าที่ !')
+            }
+        }
+    }
     
     return {
         ...values,
@@ -43,6 +63,7 @@ export default function TopicIndexVM() {
         query_topic_data,
         debouncedInputSearch,
         inputSearch,
-        setPage
+        setPage,
+        actionDelete
     }
 }

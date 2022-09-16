@@ -32,14 +32,22 @@ export default function TopicCreateVM() {
             topic_note: { value: string };
         };
 
-        let data = {
-            topic_name: formdata.topic_name.value ,
-            topic_pdf_file: formdata.topic_pdf_file.files[0],
-            topic_docx_file: formdata.topic_docx_file.files[0],
-            topic_note : formdata.topic_note.value,
-        }
+        var postData = new FormData();
+        postData.append("topic_name", formdata.topic_name.value )
+        postData.append("topic_pdf_file", formdata.topic_pdf_file.files[0] )
+        postData.append("topic_docx_file", formdata.topic_docx_file.files[0])
+        postData.append("topic_note", formdata.topic_note.value )
 
-        let res = await exportedAPITopic.createTopic(data , user.token)
+        
+
+        // let data = {
+        //     topic_name: formdata.topic_name.value ,
+        //     topic_pdf_file: formdata.topic_pdf_file.files[0],
+        //     topic_docx_file: formdata.topic_docx_file.files[0],
+        //     topic_note : formdata.topic_note.value,
+        // }
+
+        let res = await exportedAPITopic.createTopic(postData , user.token)
 
         if(res.bypass){
             exportedSwal.actionSuccess(`ส่งคำขอให้เจ้าที่ตรวจสอบเรียบร้อย รอเจ้าหน้าที่ ตรวจสอบ !`)

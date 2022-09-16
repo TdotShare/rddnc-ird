@@ -33,22 +33,20 @@ function TopicCreatePage() {
                 <div className="form-row">
                   <div className="form-group col-md">
                     <label >File .Pdf</label>
-                    <input type="file" name='topic_pdf_file' className="form-control" required={true} />
+                    <input type="file" name='topic_pdf_file' accept='.pdf' className="form-control" required={true} />
                   </div>
                   <div className="form-group col-md">
                     <label >File .Docx</label>
-                    <input type="file" name='topic_docx_file' className="form-control" required={true} />
+                    <input type="file" name='topic_docx_file' accept='.docx,.doc'  className="form-control" required={true} />
                   </div>
                 </div>
 
                 <div className="form-row">
                   <div className="form-group col-md">
                     <label >Note เพิ่มเติมถึงเจ้าหน้าที่  <small style={{color : 'red'}}>**ไม่จำเป็นต้องกรอก</small> </label>
-                    <input type="text" name='topic_note' className="form-control" required={true} />
+                    <input type="text" name='topic_note' className="form-control" />
                   </div>
                 </div>
-
-
 
                 <Button className='btn btn-block btn-success' >สร้างรายการ</Button>
 

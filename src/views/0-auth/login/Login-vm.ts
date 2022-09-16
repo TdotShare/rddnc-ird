@@ -44,7 +44,7 @@ export default function LoginVM() {
     
           let user = res.data
     
-          //console.log(user)
+         
     
           dispatch(addUser({
             user_id: user.user_id,

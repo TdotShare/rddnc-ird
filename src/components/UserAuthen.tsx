@@ -29,6 +29,7 @@ function UserAuthen({ children }: AppProps) {
     }
 
     if (query_user_data.data?.bypass === false) {
+        console.log(query_user_data.data.data)
         queryClient.invalidateQueries()
         dispatch(deleteUser())
         dispatch(setLoginfail())
