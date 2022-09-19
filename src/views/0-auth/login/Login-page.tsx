@@ -1,5 +1,4 @@
 import React from 'react'
-import { API } from '../../../config/api'
 import { TITLE } from '../../../config/title'
 import LoginVM from './Login-vm'
 
@@ -15,9 +14,6 @@ function LoginPage() {
                         <h3>{TITLE.NameWeb}</h3>
                     </div>
                     <div className="card-body">
-                        <p className="login-box-msg">Sign in to start your session</p>
-
-                        <div style={{ marginBottom: `1%` }}></div>
 
                         <div className="row">
                             <div className="col-12">
@@ -37,7 +33,7 @@ function LoginPage() {
 
                         <div className="row">
                             <div className="col-12">
-                                <a href={`${API}/manual_user`} target={`_blank`}><button className="btn btn-warning btn-block">คู่มือการใช้งาน</button></a>
+                                <a href={`https://docs.google.com/presentation/d/1GJFDyLJBlFFq0Q19us4s35D_BIGkdkp-B_SM_kx7WSw/edit?usp=sharing`} target={`_blank`}><button className="btn btn-warning btn-block">คู่มือการใช้งาน</button></a>
                             </div>
                         </div>
 

@@ -1,1 +1,1 @@
-export const PUBLIC_PATH  = process.env.NODE_ENV === 'production' ? "https://mis-ird.rmuti.ac.th/service/nddnc/" : "http://127.0.0.1:8000"
+export const PUBLIC_PATH  = process.env.NODE_ENV === 'production' ? "https://mis-ird.rmuti.ac.th/service/rddnc/" : "http://127.0.0.1:8000"

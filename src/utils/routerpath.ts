@@ -4,4 +4,5 @@ export const routerPath =  {
     Chkstopic  : '/chkstopic',
     Account  : '/account',
     Logout  : '/logout',
+    Login  : '/login',
 }

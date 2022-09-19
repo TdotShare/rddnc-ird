@@ -1,6 +1,9 @@
 import { useState } from "react"
+import { useQuery } from "react-query"
 import { useSelector } from "react-redux"
+import { APIDashboard_data } from "../../../../model/Dashboard"
 import { RootState } from "../../../../store/ConfigureStore"
+import exportedAPIDashboard from "../../../../utils/api/dashboard"
 import { routerPath } from "../../../../utils/routerpath"
 
 
@@ -8,6 +11,8 @@ import { routerPath } from "../../../../utils/routerpath"
 export default function DashboardVM() {
 
     const user = useSelector((state: RootState) => state.user.data)
+
+    const qe_dash_data = useQuery<APIDashboard_data, Error>('getDashboard', async () => exportedAPIDashboard.getDashboard(user.token))
 
     const [values] = useState({
         title: "ภาพรวมระบบ",
@@ -19,6 +24,7 @@ export default function DashboardVM() {
     
     return {
         ...values,
-        user
+        user,
+        qe_dash_data
     }
 }
