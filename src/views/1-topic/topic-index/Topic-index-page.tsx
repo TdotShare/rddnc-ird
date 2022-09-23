@@ -77,7 +77,7 @@ function TopicIndexPage() {
                             <th scope="col" >pdf</th>
                             <th scope="col" >เปอร์เซ็นต์ความซ้ำซ้อน</th>
                             <th scope="col" >รายละเอียดการตรวจสอบ</th>
-                            <th scope="col" >Note. เพิ่มจากเจ้าหน้าที่</th>
+                            <th scope="col" >ความคิดเห็นจากเจ้าหน้าที่</th>
                             
                           </tr>
                         </thead>

@@ -15,7 +15,7 @@ const userMenuList: MenuItem[] = [
 const adminMenuList: MenuItem[] = [
     { name: "ภาพรวมระบบ", icon: "fas fa-weight", url: `${routerPath.Dashboard}`, path: `admin/${routerPath.Dashboard}` },
     { name: "ตรวจสอบเอกสาร", icon: "fas fa-tasks", url: `${routerPath.Chkstopic}`, path: `admin/${routerPath.Chkstopic}` },
-    { name: "ผุ้ใช้งาน", icon: "fas fa-users", url: `${routerPath.Account}`, path: `admin/${routerPath.Account}` },
+    { name: "ผู้ใช้งาน", icon: "fas fa-users", url: `${routerPath.Account}`, path: `admin/${routerPath.Account}` },
 ]
 
 export { adminMenuList, userMenuList }

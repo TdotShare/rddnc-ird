@@ -43,7 +43,7 @@ function TopicCreatePage() {
 
                 <div className="form-row">
                   <div className="form-group col-md">
-                    <label >Note เพิ่มเติมถึงเจ้าหน้าที่  <small style={{color : 'red'}}>**ไม่จำเป็นต้องกรอก</small> </label>
+                    <label >ความเห็นเพิ่มเติมถึงเจ้าหน้าที่  <small style={{color : 'red'}}>**ไม่จำเป็นต้องกรอก</small> </label>
                     <input type="text" name='topic_note' className="form-control" />
                   </div>
                 </div>

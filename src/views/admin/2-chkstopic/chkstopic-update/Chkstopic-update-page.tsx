@@ -49,8 +49,8 @@ function ChkstopicUpdatePage() {
 
                       <div className="form-row">
                         <div className="form-group col-md">
-                          <label >Note เพิ่มเติมจากนักวิจัย</label>
-                          <textarea className="form-control" rows={3} readOnly={true} />
+                          <label >ความเห็นเพิ่มเติมจากนักวิจัย</label>
+                          <textarea className="form-control" rows={3} readOnly={true} defaultValue={viewModel.qe_topic_data.data?.data.topic_note === null ? "" : `${viewModel.qe_topic_data.data?.data.topic_note}` } />
                         </div>
                       </div>
 
